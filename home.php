@@ -14,6 +14,11 @@
 				<div class="companies-list">
 					<div class="row">
 
+            <!-- This is the Entreprenuer object -->
+
+            <?php for ($i=0; $i < 1; $i++) {
+              // code...
+            ?>
 						<div class="col-lg-3 col-md-4 col-sm-6">
 							<div class="company_profile_info">
 								<div class="company-up-info">
@@ -28,6 +33,10 @@
 								<a href="profile.php" title="" class="view-more-pro">View Profile</a>
 							</div><!--company_profile_info end-->
 						</div>
+        <?php
+          }
+        ?>
+
 					</div>
 				</div><!--companies-list end-->
 				<div class="process-comm">
