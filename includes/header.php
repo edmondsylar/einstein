@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header-data">
       <div class="logo">
-        <a href="index-2.html" title=""><img src="images/logo.png" alt=""></a>
+        <a href="home.php" title=""><img src="images/el-ogo.png" alt=""></a>
       </div><!--logo end-->
       <div class="search-bar">
         <form>

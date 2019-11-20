@@ -1,5 +1,7 @@
 <?php
-  include_once 'includes/head.php'
+  include_once 'includes/head.php';
+  include_once 'backend/config.php';
+
  ?>
 <body class="sign-in" oncontextmenu="return false;">
 	<div class="wrapper">
@@ -11,7 +13,8 @@
 						<div class="col-lg-6">
 							<div class="cmp-info">
 								<div class="cm-logo">
-									<img src="images/cm-logo.png" alt="">
+                  <img src="images/einst.png" alt="">
+									<!-- <img src="images/cm-logo.png" alt=""> -->
 									<p>einstein,  is a global platform and social networking where businesses and independent investors connect and collaborate with entrepreneurs to business</p>
 								</div><!--cm-logo end-->
 								<img src="images/cm-main-img.png" alt="">
@@ -32,13 +35,13 @@
 										<div class="row">
 											<div class="col-lg-12 no-pdd">
 												<div class="sn-field">
-													<input type="text" name="username" placeholder="Username">
+													<input type="text" name="username" required="required" placeholder="Username">
 													<i class="la la-user"></i>
 												</div><!--sn-field end-->
 											</div>
 											<div class="col-lg-12 no-pdd">
 												<div class="sn-field">
-													<input type="password" name="password" placeholder="Password">
+													<input type="password" name="password" required="required" placeholder="Password">
 													<i class="la la-lock"></i>
 												</div>
 											</div>

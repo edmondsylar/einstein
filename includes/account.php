@@ -2,7 +2,7 @@
   <h3>Your name</h3>
   <ul class="us-links">
     <li><a href="#" title="">My profile</a></li>
-    <li><a href="old/profile-account-setting.html" title="">Account Setting</a></li>
+    <li><a href="account-settings.php" title="">Account Setting</a></li>
     <li><a href="#" title="">Sponsored</a></li>
 
   </ul>
