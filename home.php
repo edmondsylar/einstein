@@ -1,6 +1,18 @@
 <?php
-  include_once 'includes/head.php'
+  session_start();
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("Location: index.php");
+  }
+  include_once 'includes/head.php';
+
+  include_once 'backend/config.php';
+
+  $cur = new Config();
+  $all = $cur->all_ents();
+
+
  ?>
+
 <body oncontextmenu="return false;">
 	<div class="wrapper">
 		<?php
@@ -15,28 +27,24 @@
 					<div class="row">
 
             <!-- This is the Entreprenuer object -->
-
-            <?php for ($i=0; $i < 1; $i++) {
-              // code...
-            ?>
+            <?php foreach ($all as $ent): ?>
+              <?php $img = base64_encode($ent['image']); ?>
 						<div class="col-lg-3 col-md-4 col-sm-6">
 							<div class="company_profile_info">
 								<div class="company-up-info">
-									<img src="images/resources/cmp-icon11.png" alt="">
-									<h3>Oracle</h3>
-									<h4>Establish Feb, 2004</h4>
+									<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="img-responsive" alt="">
+									<h3><?php echo $ent['name']; ?></h3>
+									<h4><?php echo $ent['description']; ?></h4>
 									<ul>
-										<li><a href="#" title="" class="follow">Follow</a></li>
+										<!-- <li><a href="#" title="" class="follow">Follow</a></li> -->
 										<li><a href="#" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
 									</ul>
 								</div>
-								<a href="profile.php" title="" class="view-more-pro">View Profile</a>
+								<a href="profile.php?view=<?php echo $ent['id']; ?>" title="" class="view-more-pro">View Profile</a>
 							</div><!--company_profile_info end-->
 						</div>
-        <?php
-          }
-        ?>
 
+          <?php endforeach; ?>
 					</div>
 				</div><!--companies-list end-->
 				<div class="process-comm">
@@ -53,7 +61,17 @@
      ?>
 	</div><!--theme-layout end-->
 
-
+<script type="text/javascript">
+  // redirect(){
+  //   var = "
+  //     <?php
+  //       $_SESSION['view'] ==
+  //      ?>
+  //   "
+  //
+  //
+  // }
+</script>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>
@@ -65,3 +83,5 @@
 
 <!-- Mirrored from gambolthemes.net/workwise-new/companies.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Nov 2019 11:05:47 GMT -->
 </html>
+<?php
+ ?>

@@ -1,7 +1,14 @@
 <nav>
   <ul>
     <li>
-      <a href="home.php" title="">
+    <?php
+        if ($_SESSION['role'] == 'admin') {
+          $link = "admin.php";
+        }else if($_SESSION['user']){
+          $link = "home.php";
+        }
+     ?>
+      <a href="<?php echo $link; ?>" title="">
         <span><img src="images/icon1.png" alt=""></span>
         Home
       </a>

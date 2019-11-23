@@ -1,12 +1,25 @@
 
-<!DOCTYPE html>
-<html>
-
-<!-- Mirrored from gambolthemes.net/workwise-new/company-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Nov 2019 11:05:47 GMT -->
 <?php
+    session_start();
+    if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+      header("Location: index.php");
+    }
     include_once 'includes/head.php';
+    include_once 'backend/config.php';
+
+    $cur = new Config();
+    $info = mysqli_fetch_assoc($cur->object_data($_GET['view']));
+    $img = base64_encode($info['image']);
  ?>
 
+<style media="screen">
+  .profile-pic{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+  }
+
+</style>
 
 <body oncontextmenu="return false;">
 	<div class="wrapper">
@@ -30,7 +43,9 @@
 								<div class="main-left-sidebar">
 									<div class="user_profile">
 										<div class="user-pro-img">
-											<img src="images/resources/company-profile.png" alt="">
+                      <!-- <img src="images/resources/company-profile.png" alt=""> -->
+											<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="profile-pic" alt="">
+
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">
 											<ul class="flw-hr">
@@ -38,11 +53,11 @@
 											</ul>
 											<ul class="flw-status">
 												<li>
-													<span>Following</span>
+													<span>Marketing</span>
 													<b>34</b>
 												</li>
 												<li>
-													<span>Followers</span>
+													<span>Pitching</span>
 													<b>155</b>
 												</li>
 											</ul>
@@ -83,26 +98,17 @@
 							<div class="col-lg-6">
 								<div class="main-ws-sec">
 									<div class="user-tab-sec">
-										<h3>Facebook Inc.</h3>
+										<h3><?php echo $info['name'] ?></h3>
 										<div class="star-descp">
-											<span>Established Since 2009</span>
+											<span><?php echo "Registered:  ". $info['createdOn'];?></span>
 											<ul>
 												<li><i class="fa fa-star"></i></li>
 												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
 											</ul>
 										</div><!--star-descp end-->
 										<div class="tab-feed">
 											<ul>
-												<li data-tab="feed-dd" class="active">
-													<a href="#" title="">
-														<img src="images/ic1.png" alt="">
-														<span>Feed</span>
-													</a>
-												</li>
-												<li data-tab="info-dd">
+												<li data-tab="info-dd" class="active">
 													<a href="#" title="">
 														<img src="images/ic2.png" alt="">
 														<span>Info</span>
@@ -117,75 +123,19 @@
 											</ul>
 										</div><!-- tab-feed end-->
 									</div><!--user-tab-sec end-->
+
+
 									<div class="product-feed-tab current" id="feed-dd">
 										<div class="posts-section">
-											<div class="post-bar">
-												<div class="post_topbar">
-													<div class="usy-dt">
-														<img src="images/resources/company-pic.png" alt="">
-														<div class="usy-name">
-															<h3>Facebook Inc.</h3>
-															<span><img src="images/clock.png" alt="">3 min ago</span>
-														</div>
-													</div>
-													<div class="ed-opts">
-														<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-														<ul class="ed-options">
-															<li><a href="#" title="">Edit Post</a></li>
-															<li><a href="#" title="">Unsaved</a></li>
-															<li><a href="#" title="">Unbid</a></li>
-															<li><a href="#" title="">Close</a></li>
-															<li><a href="#" title="">Hide</a></li>
-														</ul>
-													</div>
-												</div>
-												<div class="epi-sec">
-													<ul class="descp">
-														<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-														<li><img src="images/icon9.png" alt=""><span>India</span></li>
-													</ul>
-													<ul class="bk-links">
-														<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-														<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-													</ul>
-												</div>
-												<div class="job_descp">
-													<h3>Senior PHP Developer</h3>
-													<ul class="job-dt">
-														<li><a href="#" title="">Full Time</a></li>
-														<li><span>$30 / hr</span></li>
-													</ul>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-													<ul class="skill-tags">
-														<li><a href="#" title="">HTML</a></li>
-														<li><a href="#" title="">PHP</a></li>
-														<li><a href="#" title="">CSS</a></li>
-														<li><a href="#" title="">Javascript</a></li>
-														<li><a href="#" title="">Wordpress</a></li>
-													</ul>
-												</div>
-												<div class="job-status-bar">
-													<ul class="like-com">
-														<li>
-															<a href="#" class="active"><i class="fas fa-heart"></i> Like</a>
-															<img src="images/liked-img.png" alt="">
-															<span>25</span>
-														</li>
-														<li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comments 15</a></li>
-													</ul>
-													<a href="#"><i class="fas fa-eye"></i>Views 50</a>
-												</div>
-											</div><!--post-bar end-->
-
 
 
 										</div><!--posts-section end-->
 									</div><!--product-feed-tab end-->
-									<div class="product-feed-tab" id="info-dd">
+									<div class="product-feed-tab current" id="info-dd">
 										<div class="user-profile-ov">
 											<h3><a href="#" title="" class="overview-open">More detials</a>
                          <a href="#" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
+											<p><?php echo $info['description']; ?></p>
 										</div><!--user-profile-ov end-->
 
 									</div><!--product-feed-tab end-->

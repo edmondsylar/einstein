@@ -1,6 +1,7 @@
 <?php
   include_once 'includes/head.php';
   include_once 'backend/config.php';
+  $start = new Config();
 
  ?>
 <body class="sign-in" oncontextmenu="return false;">
@@ -31,11 +32,11 @@
 								<div class="sign_in_sec current" id="tab-1">
 
 									<h3>Sign in</h3>
-									<form action="home.php" method="POST">
+									<form action="backend/login.php" method="POST">
 										<div class="row">
 											<div class="col-lg-12 no-pdd">
 												<div class="sn-field">
-													<input type="text" name="username" required="required" placeholder="Username">
+													<input type="text" name="email" required="required" placeholder="Username">
 													<i class="la la-user"></i>
 												</div><!--sn-field end-->
 											</div>
@@ -75,37 +76,37 @@
 									</div> signup-tab end-->
 									<div class="dff-tab current" id="tab-3">
                     <h3>Register</h3>
-										<form>
+										<form action="backend/register.php" method="POST">
 											<div class="row">
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="text" name="name" placeholder="Full Name">
+														<input type="text" name="name" required="required" placeholder="Full Name">
 														<i class="la la-user"></i>
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="text" name="email" placeholder="email@example.com">
+														<input type="text" name="email" required="required" placeholder="email@example.com">
 														<i class="la la-globe"></i>
 													</div>
 												</div>
 
                         <div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="text" name="tel" placeholder="phone">
+														<input type="text" name="tel" required="required" placeholder="phone">
 														<i class="la la-globe"></i>
 													</div>
 												</div>
 
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" name="password" placeholder="Password">
+														<input type="password" name="password" required="required" placeholder="Password">
 														<i class="la la-lock"></i>
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" name="repeat-password" placeholder="Repeat Password">
+														<input type="password" name="repeat-password" required="required" placeholder="Repeat Password">
 														<i class="la la-lock"></i>
 													</div>
 												</div>

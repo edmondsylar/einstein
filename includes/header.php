@@ -18,8 +18,8 @@
       </div><!--menu-btn end-->
       <div class="user-account">
         <div class="user-info">
-          <img src="images/resources/user.png" alt="">
-          <a href="#" title="">John</a>
+          <!-- <img src="images/resources/user.png" alt=""> -->
+          <a href="#" title=""><?php echo $_SESSION['name']; ?></a>
           <i class="la la-sort-down"></i>
         </div>
             <?php
