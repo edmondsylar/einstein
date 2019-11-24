@@ -10,6 +10,10 @@
     $cur = new Config();
     $info = mysqli_fetch_assoc($cur->object_data($_GET['view']));
     $img = base64_encode($info['image']);
+
+    $gallery = $cur->get_galla($_GET['view']);
+    $details = $cur->get_details($_GET['view']);
+
  ?>
 
 <style media="screen">
@@ -52,14 +56,20 @@
 												<li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
 											</ul>
 											<ul class="flw-status">
-												<li>
-													<span>Marketing</span>
-													<b>34</b>
-												</li>
-												<li>
-													<span>Pitching</span>
-													<b>155</b>
-												</li>
+                        <?php if (!empty($details)): ?>
+                          <?php foreach ($details as $key ): ?>
+
+      												<li>
+      													<span>Marketing</span>
+      													<b><?php echo $key['marketing']; ?></b>
+      												</li>
+      												<li>
+      													<span>Pitching</span>
+      													<b><?php echo $key['pitching']; ?></b>
+      												</li>
+
+                          <?php endforeach; ?>
+                        <?php endif; ?>
 											</ul>
 										</div><!--user_pro_status end-->
 
@@ -145,24 +155,16 @@
 											<div class="gallery_pf">
 												<div class="row">
 
+                          <?php foreach ($gallery as $gala): ?>
+								             <?php $img = base64_encode($gala['image']); ?>
 													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
 														<div class="gallery_pt">
-															<img src="images/resources/pf-img8.jpg" alt="">
+															<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" alt="gallery image">
 															<a href="#" title=""><img src="images/all-out.png" alt=""></a>
 														</div><!--gallery_pt end-->
 													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
-														<div class="gallery_pt">
-															<img src="images/resources/pf-img9.jpg" alt="">
-															<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-														</div><!--gallery_pt end-->
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
-														<div class="gallery_pt">
-															<img src="images/resources/pf-img10.jpg" alt="">
-															<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-														</div><!--gallery_pt end-->
-													</div>
+                          <?php endforeach; ?>
+
 												</div>
 											</div><!--gallery_pf end-->
 										</div><!--portfolio-gallery-sec end-->
@@ -172,7 +174,8 @@
 							<div class="col-lg-3">
 								<div class="right-sidebar">
 									<div class="message-btn">
-										<a href="#" title=""><i class="fa fa-envelope"></i> Send email</a>
+										<a href="#" title="" class="overview-open"><i class="fas fa-camera"></i> Upload Images
+                    </a>
 									</div>
 									<div class="widget widget-portfolio">
 										<div class="wd-heady">
@@ -217,12 +220,25 @@
 
 		<div class="overview-box" id="overview-box">
 			<div class="overview-edit">
-				<h3>Overview</h3>
+				<h3>Add Gallery Image</h3>
 				<span>5000 character left</span>
-				<form>
-					<textarea></textarea>
+
+				<form action="backend/gallery.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="userid" value="<?php echo $_GET['view']; ?>">
+					<textarea name="description" placeholder="Description"></textarea>
+
+          <div class="row" style="margin: 10px;">
+            <div class="col-lg-12">
+              <div class="add-dp" id="OpenImgUpload">
+                <label for="file"><i class="fas fa-camera"></i></label>
+                <input type="file" id="file" name="image">
+                <label for="file">Upload Image</label>
+              </div>
+            </div>
+          </div>
+
 					<button type="submit" class="save">Save</button>
-					<button type="submit" class="cancel">Cancel</button>
+					<button class="cancel">Cancel</button>
 				</form>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->

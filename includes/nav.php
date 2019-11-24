@@ -14,6 +14,15 @@
       </a>
     </li>
 
+    <?php if ($_SESSION['role'] == 'admin'): ?>
+      <li>
+        <a href="home.php" title="">
+          <span><img src="images/icon4.png" alt=""></span>
+          Entrepreneurs
+        </a>
+      </li>
+    <?php endif; ?>
+
     <li>
       <a href="#" title="" class="not-box-openm">
         <span><img src="images/icon6.png" alt=""></span>

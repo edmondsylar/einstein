@@ -123,8 +123,8 @@
       }
     }
 
-    function recents(){
-        $sql = 'SELECT * FROM entrepreneurs LIMIT 10';
+    function recents($num){
+        $sql = 'SELECT * FROM entrepreneurs LIMIT'.$num.';';
         $results = mysqli_query($this->connector, $sql);
 
         return $results;
@@ -143,6 +143,45 @@
 
       return $res;
 
+    }
+
+    function add_G($userid, $description, $image){
+
+      $insertion = "INSERT INTO Gallery(`userid`, `description`, `image`) VALUES('$userid', '$description', '$image')";
+      if(mysqli_query($this->connector, $insertion)){
+
+        return header("Location: ../profile.php?view=".$userid);
+      }else{
+        header("Loaction: ../profile.php?view=".$userid."?error='error occured during insertion'");
+      }
+
+    }
+
+    function get_galla($id){
+
+      $sql = "SELECT * FROM Gallery WHERE userId = '$id'";
+      $res =  mysqli_query($this->connector, $sql);
+
+      return $res;
+    }
+
+    function get_details($id){
+      $sql = "SELECT * FROM entDetails WHERE user='$id'";
+      if($response = mysqli_query($this->connector, $sql)){
+
+        return $response;
+      }else{
+
+        $error = "Nothig to return";
+        return $error;
+      }
+
+      if(!empty($response)){
+
+        return $response;
+      }else{
+
+      }
     }
 
 

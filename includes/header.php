@@ -2,7 +2,14 @@
   <div class="container">
     <div class="header-data">
       <div class="logo">
-        <a href="home.php" title=""><img src="images/el-ogo.png" alt=""></a>
+        <?php
+            if ($_SESSION['role'] == 'admin') {
+              $link = "admin.php";
+            }else if($_SESSION['user']){
+              $link = "home.php";
+            }
+         ?>
+        <a href="<?php echo $link; ?>" title=""><img src="images/el-ogo.png" alt=""></a>
       </div><!--logo end-->
       <div class="search-bar">
         <form>

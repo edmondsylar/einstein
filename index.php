@@ -16,7 +16,7 @@
 								<div class="cm-logo">
                   <img src="images/einst.png" alt="">
 									<!-- <img src="images/cm-logo.png" alt=""> -->
-									<p>einstein,  is a global platform and social networking where businesses and independent investors connect and collaborate with entrepreneurs to business</p>
+									<p>einstein,  is a global platform and social networking where businesses and independent investors connect and collaborate with entrepreneurs to do business</p>
 								</div><!--cm-logo end-->
 								<img src="images/cm-main-img.png" alt="">
 							</div><!--cmp-info end-->
@@ -24,13 +24,22 @@
 						<div class="col-lg-6">
 							<div class="login-sec">
 								<ul class="sign-control">
+
+                  <li data-tab="tab-home" onclick="window.location.href='http://www.einsteinrising.org/', _blank"><a href="" target="_blank">Home</a></li>
+                  <li data-tab="tab-home" onclick="window.location.href='https://training.einsteinrising.org/', _blank"><a href="" target="_blank">ET Training</a></li>
                   <li data-tab="tab-1" class="current"><a href="#" title="">Sign in</a></li>
                   <li data-tab="tab-2"><a href="#" title="">Register</a></li>
-                  <li data-tab="tab-2"><a href="#" title="">ET Training</a></li>
-									<li data-tab="tab-2"><a href="#" title="">About</a></li>
 								</ul>
-								<div class="sign_in_sec current" id="tab-1">
 
+                <div class="sign_in_sec" id="tab-home">
+                  <h3>PEOPLE. PLANET. PROFIT </h3>
+                  <p>
+                    E instein raising a business accelerator for Africa's Social Entreprenuers. Our Entreprenuers Develop or create businesses that improve People's lives, Protect
+                    The Planet and Make a Profit
+                  </p>
+                </div>
+
+								<div class="sign_in_sec current" id="tab-1">
 									<h3>Sign in</h3>
 									<form action="backend/login.php" method="POST">
 										<div class="row">
