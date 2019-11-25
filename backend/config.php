@@ -64,7 +64,7 @@
         }
 
       }else{
-        echo "Wrong credentials!";
+        return header("Location: ../index.php?error='Wrong credentials'");
       }
 
     }

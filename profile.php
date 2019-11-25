@@ -143,8 +143,7 @@
 									</div><!--product-feed-tab end-->
 									<div class="product-feed-tab current" id="info-dd">
 										<div class="user-profile-ov">
-											<h3><a href="#" title="" class="overview-open">More detials</a>
-                         <a href="#" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
+											<h3>More detials</h3>
 											<p><?php echo $info['description']; ?></p>
 										</div><!--user-profile-ov end-->
 
@@ -173,13 +172,16 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="right-sidebar">
-									<div class="message-btn">
-										<a href="#" title="" class="overview-open"><i class="fas fa-camera"></i> Upload Images
-                    </a>
-									</div>
+                  <?php if ($_SESSION['role'] == 'admin'): ?>
+                    <div class="message-btn">
+  										<a href="#" title="" class="overview-open"><i class="fas fa-camera"></i> Upload Images
+                      </a>
+  									</div>
+                  <?php endif; ?>
+
 									<div class="widget widget-portfolio">
 										<div class="wd-heady">
-											<h3>Details</h3>
+											<h3>Einstein Raising</h3>
 
 										</div>
 										<div class="pf-gallery">

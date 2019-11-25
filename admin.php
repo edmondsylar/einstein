@@ -50,12 +50,12 @@
 											<li>
 												<h4><?php echo $_SESSION['role']; ?></h4>
 											</li>
-											<li>
+											<!-- <li>
 												<h4>Followers</h4>
 												<span>155</span>
-											</li>
+											</li> -->
 											<li>
-												<a href="my-profile.html" title="">View Profile</a>
+												<a href="#" title="">View Profile</a>
 											</li>
 										</ul>
 									</div><!--user-data end-->
@@ -72,7 +72,7 @@
 											<li><a href="#" title="">Copyright Policy</a></li>
 										</ul>
 										<div class="cp-sec">
-											<img src="images/logo2.png" alt="">
+											<img src="images/lewlog.png" alt="">
 											<p><img src="images/cp.png" alt="">Copyright 2019</p>
 										</div>
 									</div><!--tags-sec end-->
@@ -178,12 +178,11 @@
 							<div class="col-lg-3 pd-right-none no-pd">
 								<div class="right-sidebar">
 									<div class="widget widget-about">
-										<img src="images/wd-logo.png" alt="">
-										<h3>Track Time on Workwise</h3>
-										<span>Pay only for the Hours worked</span>
+										<img src="images/elog.png" alt="">
+										<h3>PEOPLE. PLANET. PROFIT</h3>
+										<span>imprive lives, protect the planet.....</span>
 										<div class="sign_link">
-											<h3><a href="sign-in.html" title="">Sign up</a></h3>
-											<a href="#" title="">Learn More</a>
+											<a href="http://www.einsteinrising.org/" target="_blank" title="">Learn More</a>
 										</div>
 									</div><!--widget-about end-->
 

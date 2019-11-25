@@ -4,7 +4,7 @@
     <?php
         if ($_SESSION['role'] == 'admin') {
           $link = "admin.php";
-        }else if($_SESSION['user']){
+        }else if($_SESSION['role']=='user'){
           $link = "home.php";
         }
      ?>
