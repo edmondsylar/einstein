@@ -53,7 +53,7 @@
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">
 											<ul class="flw-hr">
-												<li><a href="#" title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
+												<li><a href="#" title="" class="flww"><i class="la la-envelope"></i> Contact</a></li>
 											</ul>
 											<ul class="flw-status">
                         <?php if (!empty($details)): ?>
@@ -80,7 +80,7 @@
 											<i class="la la-ellipsis-v"></i>
 										</div><!--sd-title end-->
 
-										<div class="suggestions-list">
+										<!-- <div class="suggestions-list">
 											<div class="suggestion-usd">
 												<img src="images/resources/s1.png" alt="">
 												<div class="sgt-text">
@@ -101,7 +101,7 @@
 											<div class="view-more">
 												<a href="#" title="">View More</a>
 											</div>
-										</div><!--suggestions-list end-->
+										</div>suggestions-list end-->
 									</div><!--suggestions end-->
 								</div><!--main-left-sidebar end-->
 							</div>
@@ -179,17 +179,17 @@
   									</div>
                   <?php endif; ?>
 
-									<div class="widget widget-portfolio">
-										<div class="wd-heady">
-											<h3>Einstein Raising</h3>
+                  <div class="right-sidebar">
+  									<div class="widget widget-about">
+  										<img src="images/elog.png" alt="">
+  										<!-- <h3>PEOPLE. PLANET. PROFIT</h3> -->
+  										<span>imprive lives, protect the planet.....</span>
+  										<div class="sign_link">
+  											<a href="http://www.einsteinrising.org/" target="_blank" title="">Learn More</a>
+  										</div>
+  									</div><!--widget-about end-->
 
-										</div>
-										<div class="pf-gallery">
-											<p>
-                        we can have some sample details here
-                      </p>
-										</div><!--pf-gallery end-->
-									</div><!--widget-portfolio end-->
+  								</div><!--right-sidebar end-->
 								</div><!--right-sidebar end-->
 							</div>
 						</div>
