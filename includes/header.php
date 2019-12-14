@@ -9,12 +9,13 @@
               $link = "home.php";
             }
          ?>
-        <a href="<?php echo $link; ?>" title=""><img src="images/el-ogo.png" alt=""></a>
+         <a href="<?php echo $link; ?>" title=""><img src="images/news.png" alt=""></a>
+        <!-- <a href="<?php echo $link; ?>" title=""><img src="images/el-ogo.png" alt=""></a> -->
       </div><!--logo end-->
       <div class="search-bar">
         <form>
-          <input type="text" name="search" placeholder="Search...">
-          <button type="submit"><i class="la la-search"></i></button>
+          <!-- <input type="text" name="search" placeholder="Search...">
+          <button type="submit"><i class="la la-search"></i></button> -->
         </form>
       </div><!--search-bar end-->
         <?php

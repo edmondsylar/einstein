@@ -191,20 +191,17 @@
 				</div><!--signin-pop end-->
 			</div><!--signin-popup end-->
 			<div class="footy-sec">
-				<div class="container">
-					<ul>
-						<li><a href="#" title="">Help Center</a></li>
-						<li><a href="#" title="">About</a></li>
-						<li><a href="#" title="">Privacy Policy</a></li>
-						<li><a href="#" title="">Community Guidelines</a></li>
-						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="#" title="">Forum</a></li>
-						<li><a href="#" title="">Language</a></li>
-						<li><a href="#" title="">Copyright Policy</a></li>
-					</ul>
-					<p><img src="images/copy-icon.png" alt="">Copyright 2019</p>
-				</div>
+        <div class="container">
+          <ul>
+            <li><a href="#" title="">Brian Mangeni (Uganda)</a></li>
+            <li><a href="http://www.einsteinrising.org/story/" title="">About</a></li>
+            <li><a href="http://www.einsteinrising.org/what-we-offer/" title="">what we offer</a></li>
+            <li><a href="http://www.einsteinrising.org/contact-us/" title="">Contact Us</a></li>
+            <li><a href="http://www.einsteinrising.org/donate/" title="">Donate</a></li>
+            <li><a href="#" title="">info@einsteinrising.org</a></li>
+          </ul>
+          <p><img src="images/lewlog.png" alt="">Copyright 2019</p>
+        </div>
 			</div><!--footy-sec end-->
 		</div><!--sign-in-page end-->
 

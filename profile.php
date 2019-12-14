@@ -6,6 +6,7 @@
     }
     include_once 'includes/head.php';
     include_once 'backend/config.php';
+    include_once 'includes/style.php';
 
     $cur = new Config();
     $info = mysqli_fetch_assoc($cur->object_data($_GET['view']));
@@ -53,64 +54,63 @@
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">
 											<ul class="flw-hr">
-												<li><a href="#" title="" class="flww"><i class="la la-envelope"></i> Contact</a></li>
+												<!-- <li><a href="#" title="" class="flww"><i class="la la-envelope"></i> Details</a></li> -->
 											</ul>
-											<ul class="flw-status">
-                        <?php if (!empty($details)): ?>
-                          <?php foreach ($details as $key ): ?>
 
-      												<li>
-      													<span>Marketing</span>
-      													<b><?php echo $key['marketing']; ?></b>
-      												</li>
-      												<li>
-      													<span>Pitching</span>
-      													<b><?php echo $key['pitching']; ?></b>
-      												</li>
-
-                          <?php endforeach; ?>
-                        <?php endif; ?>
-											</ul>
 										</div><!--user_pro_status end-->
 
 									</div><!--user_profile end-->
 									<div class="suggestions full-width">
 										<div class="sd-title">
-											<h3>More Suggestions</h3>
+											<h3>More Details</h3>
 											<i class="la la-ellipsis-v"></i>
 										</div><!--sd-title end-->
 
-										<!-- <div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img src="images/resources/s1.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
+										<div class="suggestions-list">
+                      <?php if (!empty($details)): ?>
+                        <?php foreach ($details as $key ): ?>
+    											<div class="suggestion-usd">
+    												<!-- <img src="images/resources/s1.png" alt=""> -->
+    												<div class="sgt-text">
+    													<h4>Pitching</h4>
+    													<span><?php echo $key['pitching']; ?></span>
+    												</div>
+    												<span><i class="la la-plus"></i></span>
+    											</div>
 
-											<div class="suggestion-usd">
-												<img src="images/resources/s6.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="view-more">
+    											<div class="suggestion-usd">
+    												<!-- <img src="images/resources/s6.png" alt=""> -->
+    												<div class="sgt-text">
+    													<h4>Marketing</h4>
+    													<span><?php echo $key['marketing']; ?></span>
+    												</div>
+    												<span><i class="la la-plus"></i></span>
+    											</div>
+
+                          <div class="suggestion-usd">
+    												<!-- <img src="images/resources/s6.png" alt=""> -->
+    												<div class="sgt-text">
+    													<h4>Business Development</h4>
+    													<span><?php echo $key['businessDev']; ?></span>
+    												</div>
+    												<span><i class="la la-verify"></i></span>
+    											</div>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+
+											<!-- <div class="view-more">
 												<a href="#" title="">View More</a>
-											</div>
-										</div>suggestions-list end-->
-									</div><!--suggestions end-->
-								</div><!--main-left-sidebar end-->
+											</div> -->
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="col-lg-6">
 								<div class="main-ws-sec">
 									<div class="user-tab-sec">
 										<h3><?php echo $info['name'] ?></h3>
 										<div class="star-descp">
-											<span><?php echo "Registered:  ". $info['createdOn'];?></span>
+											<span><?php echo "Since: ".  date( "M-d-Y", strtotime($info['createdOn']));?></span>
 											<ul>
 												<li><i class="fa fa-star"></i></li>
 												<li><i class="fa fa-star"></i></li>
@@ -152,16 +152,16 @@
 										<div class="portfolio-gallery-sec">
 											<h3>Gallery</h3>
 											<div class="gallery_pf">
-												<div class="row">
+												<div class="row" style="z-index: 1;"">
 
                           <?php foreach ($gallery as $gala): ?>
 								             <?php $img = base64_encode($gala['image']); ?>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
-														<div class="gallery_pt">
-															<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" alt="gallery image">
-															<a href="#" title=""><img src="images/all-out.png" alt=""></a>
-														</div><!--gallery_pt end-->
-													</div>
+    													<div class="col-lg-4 col-md-4 col-sm-4 col-6" class="galla-view" data-tooltip="<?php echo $gala['description']; ?>">
+    														<div class="gallery_pt">
+    															<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>"  class=";" alt="gallery image">
+    															<!-- <a href="#"  class="overview-opening" title=""><img src="images/all-out.png" alt=""></a> -->
+    														</div><!--gallery_pt end-->
+    													</div>
                           <?php endforeach; ?>
 
 												</div>
@@ -170,6 +170,8 @@
 									</div><!--product-feed-tab end-->
 								</div><!--main-ws-sec end-->
 							</div>
+
+
 							<div class="col-lg-3">
 								<div class="right-sidebar">
                   <?php if ($_SESSION['role'] == 'admin'): ?>
@@ -179,14 +181,17 @@
   									</div>
                   <?php endif; ?>
 
-                  <div class="right-sidebar">
-  									<div class="widget widget-about">
-  										<img src="images/elog.png" alt="">
-  										<!-- <h3>PEOPLE. PLANET. PROFIT</h3> -->
-  										<span>imprive lives, protect the planet.....</span>
-  										<div class="sign_link">
-  											<a href="http://www.einsteinrising.org/" target="_blank" title="">Learn More</a>
-  										</div>
+                  <div class="right-sidebar ads">
+  									<div class="widget widget-about" style="z-index: -1;">
+                      <div class="fb-page"
+                         data-href="https://www.facebook.com/EinsteinRising/"
+                         data-small-header="false"
+                         data-hide-cover="false"
+                         data-show-facepile="true"
+                         data-show-posts="false">
+                      </div>
+                    <div id="fb-root"></div>
+
   									</div><!--widget-about end-->
 
   								</div><!--right-sidebar end-->
@@ -198,27 +203,7 @@
 			</div>
 		</main>
 
-
-		<footer>
-			<div class="footy-sec mn no-margin">
-				<div class="container">
-					<ul>
-						<li><a href="help-center.html" title="">Help Center</a></li>
-						<li><a href="about.html" title="">About</a></li>
-						<li><a href="#" title="">Privacy Policy</a></li>
-						<li><a href="#" title="">Community Guidelines</a></li>
-						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="forum.html" title="">Forum</a></li>
-						<li><a href="#" title="">Language</a></li>
-						<li><a href="#" title="">Copyright Policy</a></li>
-					</ul>
-					<p><img src="images/copy-icon2.png" alt="">Copyright 2018</p>
-					<img class="fl-rgt" src="images/logo2.png" alt="">
-				</div>
-			</div>
-		</footer><!--footer end-->
-
+    <?php include_once 'includes/footer.php'; ?>
 
 		<div class="overview-box" id="overview-box">
 			<div class="overview-edit">
@@ -392,7 +377,15 @@
 
 	</div><!--theme-layout end-->
 
-
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>

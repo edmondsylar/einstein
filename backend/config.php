@@ -9,6 +9,7 @@
     private $name;
     private $email;
     private $id;
+    private $phone;
 
     function __construct()
     {
@@ -27,6 +28,86 @@
       }
     }
 
+    function fetch_users(){
+      $users_query = "SELECT * FROM users where role='user'";
+      $users = mysqli_query($this->connector, $users_query);
+
+      return $users;
+
+    }
+
+    function send_message($id, $msg){
+
+      $insert_sql = "INSERT INTO notifications(`receiver`,`message`) VALUES('$id','$msg')";
+      if(mysqli_query($this->connector, $insert_sql)){
+        header("Location:../notifications.php?user=".$id);
+      }else{
+        echo mysqli_error($this->connector);
+        // echo "There was an error sending a message";
+      }
+    }
+
+    function check_notifications($id){
+      $notifications = "SELECT * FROM notifications WHERE receiver='$id'";
+      $not = mysqli_query($this->connector, $notifications);
+      if($not){
+        return $not;
+      }
+
+    }
+
+    function clear_notifications($id){
+      $del = "DELETE FROM notifications WHERE receiver='$id'";
+      $action = mysqli_query($this->connector, $del);
+
+      if($action){
+        return header("Location: ../home.php");
+      }
+    }
+
+    function get_user($id){
+
+      $sql_one = "SELECT * FROM users where id='$id'";
+      $sql_two = "SELECT * FROM notifications WHERE receiver='$id'";
+
+      $userInfo = mysqli_query($this->connector, $sql_one);
+      $notifications = mysqli_query($this->connector, $sql_two);
+
+      $response = array('userdetails' => $userInfo , 'messages'=>$notifications );
+
+      return $response;
+    }
+
+    function update_user_info($id, $email, $name, $phone){
+      $update_sql = "UPDATE users set email='$email', phoneNumber='$phone', full_name='$name' WHERE id='$id'";
+      if (mysqli_query($this->connector, $update_sql)){
+
+        header("Location: ../account-settings.php?updated");
+      }else{
+        header("Location: ../account-settings.php?error");
+
+        // this is for debuging purposes
+        // echo mysqli_error($this->connector);
+
+      }
+
+    }
+
+    function change_password($id, $old, $new){
+
+      $hashedPass = md5($old);
+      $new_pass = md5($new);
+
+      $update_query = "UPDATE users set password='$new_pass' WHERE id='$id' AND password='$hashedPass'";
+      if(mysqli_query($this->connector, $update_query)){
+        header('Location: ../account-settings.php?updated');
+      }else{
+
+        header("Location: ../account-settings.php?error");
+      }
+
+
+    }
 
     function login($email, $password){
 
@@ -52,6 +133,7 @@
         $_SESSION["name"] = $this->name;
         $_SESSION["email"] = $this->email;
         $_SESSION["role"] = $bj['role'];
+        $_SESSION['phone'] = $bj['phoneNumber'];
 
         if($_SESSION['role'] == 'user'){
           // redirect to user panel if user role.

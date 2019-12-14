@@ -4,7 +4,7 @@
     header("Location: index.php");
   }
   include_once 'includes/head.php';
-
+  include_once 'includes/style.php';
   include_once 'backend/config.php';
 
   $cur = new Config();
@@ -34,11 +34,8 @@
 								<div class="company-up-info">
 									<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="img-responsive" alt="">
 									<h3><?php echo $ent['name']; ?></h3>
-									<h4><?php echo $ent['description']; ?></h4>
-									<ul>
-										<!-- <li><a href="#" title="" class="follow">Follow</a></li> -->
-										<li><a href="#" title="" class="message-us"><i class="fa fa-envelope"></i></a></li>
-									</ul>
+									<h4 class="desc"><?php echo $ent['description']; ?></h4>
+
 								</div>
 								<a href="profile.php?view=<?php echo $ent['id']; ?>" title="" class="view-more-pro">View Profile</a>
 							</div><!--company_profile_info end-->
@@ -61,17 +58,6 @@
      ?>
 	</div><!--theme-layout end-->
 
-<script type="text/javascript">
-  // redirect(){
-  //   var = "
-  //     <?php
-  //       $_SESSION['view'] ==
-  //      ?>
-  //   "
-  //
-  //
-  // }
-</script>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>

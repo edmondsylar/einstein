@@ -1,9 +1,9 @@
 <div class="user-account-settingss">
   <h3>Your name</h3>
   <ul class="us-links">
-    <li><a href="#" title="">My profile</a></li>
-    <li><a href="#" title="">Account Setting</a></li>
-    <!-- <li><a href="account-settings.php" title="">Account Setting</a></li> -->
+    <li><a href="my-profile.php" title="">My profile</a></li>
+    <!-- <li><a href="#" title="">Account Setting</a></li> -->
+    <li><a href="account-settings.php" title="">Account Setting</a></li>
     <li><a href="#" target="_blank" title="">Sponsored</a></li>
   </ul>
 

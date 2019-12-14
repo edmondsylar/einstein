@@ -1,7 +1,7 @@
 $(window).on("load", function() {
     "use strict";
 
-    
+
 
     //  ============= POST PROJECT POPUP FUNCTION =========
 
@@ -76,6 +76,7 @@ $(window).on("load", function() {
         $(".wrapper").addClass("overlay");
         return false;
     });
+
     $(".close-box").on("click", function(){
         $("#overview-box").removeClass("open");
         $(".wrapper").removeClass("overlay");
@@ -187,7 +188,7 @@ $(window).on("load", function() {
     });
 
 
-    //  ============== ChatBox ============== 
+    //  ============== ChatBox ==============
 
 
     $(".chat-mg").on("click", function(){
@@ -237,7 +238,7 @@ $(".user-info").on("click", function(){$("#users").hide();
         $(".user-account-settingss").hide();
         $(this).next("#notification").toggle();
     });
-    
+
 	*/
 	$( ".user-info" ).click(function() {
   $( ".user-account-settingss" ).slideToggle( "fast");
@@ -245,7 +246,7 @@ $(".user-info").on("click", function(){$("#users").hide();
 	  $("#notification").not($(this).next("#notification")).slideUp();
     // Animation complete.
   });
- 
+
 
     //  ============= FORUM LINKS MOBILE MENU FUNCTION =========
 
@@ -308,5 +309,3 @@ $(".user-info").on("click", function(){$("#users").hide();
 
 
 });
-
-

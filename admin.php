@@ -48,34 +48,13 @@
 										</div><!--user-profile end-->
 										<ul class="user-fw-status">
 											<li>
-												<h4><?php echo $_SESSION['role']; ?></h4>
-											</li>
-											<!-- <li>
-												<h4>Followers</h4>
-												<span>155</span>
-											</li> -->
-											<li>
-												<a href="#" title="">View Profile</a>
+                        <a href="account-settings.php" title="">Account Setting</a>
+												<!-- <a href="my-profile.php" title="">View Profile</a> -->
 											</li>
 										</ul>
 									</div><!--user-data end-->
 
-									<div class="tags-sec full-width">
-										<ul>
-											<li><a href="#" title="">Help Center</a></li>
-											<li><a href="#" title="">About</a></li>
-											<li><a href="#" title="">Privacy Policy</a></li>
-											<li><a href="#" title="">Community Guidelines</a></li>
-											<li><a href="#" title="">Cookies Policy</a></li>
-											<li><a href="#" title="">Career</a></li>
-											<li><a href="#" title="">Language</a></li>
-											<li><a href="#" title="">Copyright Policy</a></li>
-										</ul>
-										<div class="cp-sec">
-											<img src="images/lewlog.png" alt="">
-											<p><img src="images/cp.png" alt="">Copyright 2019</p>
-										</div>
-									</div><!--tags-sec end-->
+
 								</div><!--main-left-sidebar end-->
 							</div>
 							<div class="col-lg-6 col-md-8 no-pd">
@@ -113,7 +92,10 @@
 										</div><!--top-profiles end-->
 
                   <?php foreach ($recents2 as $each): ?>
-                  <?php $img = base64_encode($each['image']); ?>
+                  <?php
+                  $details = $cur->get_details($each['id']);
+                  $img = base64_encode($each['image']);
+                  ?>
   										<div class="post-bar">
   											<div class="post_topbar">
   												<div class="usy-dt">
@@ -127,39 +109,28 @@
   											</div>
   											<div class="epi-sec">
   												<ul class="descp">
-  													<li><img src="images/icon8.png" alt=""><span></span></li>
-  													<li><img src="images/icon9.png" alt=""><span>India</span></li>
+  													<li><img src="images/icon9.png" alt=""><span>Uganda</span></li>
   												</ul>
   												<ul class="bk-links">
-  													<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-  													<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-  													<li><a href="#" title="" class="bid_now">Bid Now</a></li>
+  													<li><a href="#" title="" class="bid_now">contact</a></li>
   												</ul>
   											</div>
   											<div class="job_descp">
   												<h3>Entreprenuer Detail</h3>
   												<ul class="job-dt">
   													<li><a href="#" title="">Full Time</a></li>
-  													<li><span>$30 / hr</span></li>
   												</ul>
   												<p><?php echo $each['description']; ?> <a href="profile.php?view=<?php echo $each['id']; ?>" title="">  &nbsp; view more</a></p>
-  												<ul class="skill-tags">
-  													<li><a href="#" title="">Marketing: </a></li>
-                            <li><a href="#" title="">Pitching:</a></li>
-  													<li><a href="#" title="">Business Develpoment:</a></li>
+                          <?php if (!empty($details)): ?>
+                            <?php foreach ($details as $key ): ?>
+      												<ul class="skill-tags">
+      													<li><a href="#" title="">Marketing: <?php echo $key['marketing'] ?></a></li>
+                                <li><a href="#" title="">Pitching: <?php echo $key['pitching'] ?></a></li>
+      													<li><a href="#" title="">Business Develpoment: <?php echo $key['businessDev'] ?></a></li>
 
-  												</ul>
-  											</div>
-  											<div class="job-status-bar">
-  												<ul class="like-com">
-  													<li>
-  														<a href="#"><i class="fas fa-heart"></i> Like</a>
-  														<img src="images/liked-img.png" alt="">
-  														<span>25</span>
-  													</li>
-  													<li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment 15</a></li>
-  												</ul>
-  												<a href="#"><i class="fas fa-eye"></i>Views 50</a>
+      												</ul>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
   											</div>
   										</div><!--post-bar end-->
                       <?php endforeach; ?>
@@ -175,18 +146,22 @@
 									</div><!--posts-section end-->
 								</div><!--main-ws-sec end-->
 							</div>
-							<div class="col-lg-3 pd-right-none no-pd">
-								<div class="right-sidebar">
-									<div class="widget widget-about">
-										<img src="images/elog.png" alt="">
-										<h3>PEOPLE. PLANET. PROFIT</h3>
-										<span>imprive lives, protect the planet.....</span>
-										<div class="sign_link">
-											<a href="http://www.einsteinrising.org/" target="_blank" title="">Learn More</a>
-										</div>
-									</div><!--widget-about end-->
+							<div class="col-lg-3 pd-right-none no-pd" style="width: 400px;">
+                <div class="right-sidebar ads">
+                  <div class="widget widget-about">
 
-								</div><!--right-sidebar end-->
+                    <div class="fb-page"
+                       data-href="https://www.facebook.com/EinsteinRising/"
+                       data-small-header="false"
+                       data-hide-cover="false"
+                       data-show-facepile="true"
+                       data-show-posts="false">
+                    </div>
+                  <div id="fb-root"></div>
+
+                  </div><!--widget-about end-->
+
+                </div><!--right-sidebar end-->
 							</div>
 						</div>
 					</div><!-- main-section-data end-->
@@ -243,8 +218,19 @@
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
 
+    <?php include_once 'includes/footer.php'; ?>
+
 	</div><!--theme-layout end-->
 
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
