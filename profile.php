@@ -204,6 +204,37 @@
 		</main>
 
     <?php include_once 'includes/footer.php'; ?>
+
+		<div class="overview-box" id="overview-box">
+			<div class="overview-edit">
+				<h3>Add Gallery Image</h3>
+				<span>5000 character left</span>
+
+				<form action="backend/gallery.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="userid" value="<?php echo $_GET['view']; ?>">
+					<textarea name="description" placeholder="Description"></textarea>
+
+          <div class="row" style="margin: 10px;">
+            <div class="col-lg-12">
+              <div class="add-dp" id="OpenImgUpload">
+                <label for="file"><i class="fas fa-camera"></i></label>
+                <input type="file" id="file" name="image">
+                <label for="file">Upload Image</label>
+              </div>
+            </div>
+          </div>
+
+					<button type="submit" class="save">Save</button>
+					<button class="cancel">Cancel</button>
+				</form>
+				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+			</div><!--overview-edit end-->
+		</div><!--overview-box end-->
+
+
+
+	</div><!--theme-layout end-->
+
   <script>
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
