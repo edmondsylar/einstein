@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -46,21 +45,19 @@
 						<div class="row">
 							<div class="col-lg-3">
 								<div class="main-left-sidebar">
-									<div class="user_profile">
+									<div class="user_profile shadow">
 										<div class="user-pro-img">
-                      <!-- <img src="images/resources/company-profile.png" alt=""> -->
-											<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="profile-pic" alt="">
+											<img id="myImg" src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="profile-pic" alt="">
 
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">
 											<ul class="flw-hr">
-												<!-- <li><a href="#" title="" class="flww"><i class="la la-envelope"></i> Details</a></li> -->
 											</ul>
 
 										</div><!--user_pro_status end-->
 
 									</div><!--user_profile end-->
-									<div class="suggestions full-width">
+									<div class="suggestions full-width shadow">
 										<div class="sd-title">
 											<h3>More Details</h3>
 											<i class="la la-ellipsis-v"></i>
@@ -75,7 +72,7 @@
     													<h4>Pitching</h4>
     													<span><?php echo $key['pitching']; ?></span>
     												</div>
-    												<span><i class="la la-plus"></i></span>
+    												<span><i class="la la-cats  "></i></span>
     											</div>
 
     											<div class="suggestion-usd">
@@ -84,7 +81,7 @@
     													<h4>Marketing</h4>
     													<span><?php echo $key['marketing']; ?></span>
     												</div>
-    												<span><i class="la la-plus"></i></span>
+    												<span><i class="la la-menu"></i></span>
     											</div>
 
                           <div class="suggestion-usd">
@@ -142,43 +139,52 @@
 										</div><!--posts-section end-->
 									</div><!--product-feed-tab end-->
 									<div class="product-feed-tab current" id="info-dd">
-										<div class="user-profile-ov">
+										<div class="user-profile-ov shadow">
 											<h3>More detials</h3>
 											<p><?php echo $info['description']; ?></p>
 										</div><!--user-profile-ov end-->
 
 									</div><!--product-feed-tab end-->
-									<div class="product-feed-tab" id="portfolio-dd">
-										<div class="portfolio-gallery-sec">
-											<h3>Gallery</h3>
-											<div class="gallery_pf">
-												<div class="row" style="z-index: 1;">
+						<div class="product-feed-tab" id="portfolio-dd">
+							<div class="portfolio-gallery-sec shadow">
+								<h3>Gallery</h3>
+								<?php
+									$m = '';
+								?>
+								<input type="hidden" id="imgt" name="" value="">
+									<div class="gallery_pf">
+								<div class="row" style="z-index: 1;">
+							<?php foreach ($gallery as $gala): ?>
+												<?php
+									$img = base64_encode($gala['image']);
+									$value = "data:image/jpg;charset=utf8;base64,<?php echo $img ?>"
+								?>
 
-                          <?php foreach ($gallery as $gala): ?>
-								             <?php $img = base64_encode($gala['image']); ?>
-    													<div class="col-lg-4 col-md-4 col-sm-4 col-6" class="galla-view" data-tooltip="<?php echo $gala['description']; ?>">
-    														<div class="gallery_pt">
-    															<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>"  class=";" alt="gallery image">
-    															<a href="#"  class="overview-opening" title=""><img src="images/all-out.png" alt=""></a>
-    														</div>
-    													</div>
-                          <?php endforeach; ?>
+									<div class="col-lg-8 col-md-8 col-sm-8 col-12 max-height: 100%;" 
+									class="galla-view" 
+									data-tooltip="<?php echo $gala['description']; ?>"
+									>
+										<div class="gallery_pt">
+											<img id="myImg" class="" src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>">
+										</div>
+									</div>
 
-												</div>
-											</div><!--gallery_pf end-->
-										</div><!--portfolio-gallery-sec end-->
-									</div><!--product-feed-tab end-->
-								</div><!--main-ws-sec end-->
-							</div>
+							<?php endforeach; ?>
+
+								</div>
+							</div><!--gallery_pf end-->
+						</div><!--portfolio-gallery-sec end-->
+					</div><!--product-feed-tab end-->
+				</div><!--main-ws-sec end-->
+			</div>
 
 
-							<div class="col-lg-3">
-								<div class="right-sidebar">
-                  <?php if ($_SESSION['role'] == 'admin'): ?>
-                    <div class="message-btn">
-  										<a href="#" title="" class="overview-open"><i class="fas fa-camera"></i> Upload Images
-                      </a>
-  									</div>
+				<div class="col-lg-3">
+					<div class="right-sidebar">
+        <?php if ($_SESSION['role'] == 'admin'): ?>
+        <div class="message-btn">
+  			<a href="#" title="" class="overview-open"><i class="fas fa-camera"></i> Upload Images</a>
+  		</div>
                   <?php endif; ?>
 
                   <div class="right-sidebar ads">
@@ -191,9 +197,8 @@
                          data-show-posts="false">
                       </div>
                     <div id="fb-root"></div>
-
   									</div><!--widget-about end-->
-
+                      <a class="twitter-timeline" data-height="250" href="https://twitter.com/EinsteinRising?ref_src=twsrc%5Etfw">Tweets by EinsteinRising</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   								</div><!--right-sidebar end-->
 								</div><!--right-sidebar end-->
 							</div>

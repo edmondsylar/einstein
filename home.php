@@ -21,7 +21,7 @@
 		<section class="companies-info">
 			<div class="container">
 				<div class="company-title">
-					<h3>All Entrepreneurs</h3>
+					<h3 class="shadow">All Entrepreneurs</h3>
 				</div><!--company-title end-->
 				<div class="companies-list">
 					<div class="row">
@@ -29,26 +29,23 @@
             <!-- This is the Entreprenuer object -->
             <?php foreach ($all as $ent): ?>
               <?php $img = base64_encode($ent['image']); ?>
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<div class="company_profile_info">
-								<div class="company-up-info">
-									<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="img-responsive" alt="">
-									<h3><?php echo $ent['name']; ?></h3>
-									<h4 class="desc"><?php echo $ent['description']; ?></h4>
+    						<div class="col-lg-3 col-md-4 col-sm-6">
+    							<div class="company_profile_info shadow">
+    								<div class="company-up-info">
+    									<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="img-responsive" alt="">
+    									<h3><?php echo $ent['name']; ?></h3>
+    									<h4 class="desc"><?php echo $ent['description']; ?></h4>
 
-								</div>
-								<a href="profile.php?view=<?php echo $ent['id']; ?>" title="" class="view-more-pro">View Profile</a>
-							</div><!--company_profile_info end-->
-						</div>
+    								</div>
+    								<a href="profile.php?view=<?php echo $ent['id']; ?>" title="" class="view-more-pro">View Profile</a>
+    							</div><!--company_profile_info end-->
+    						</div>
 
           <?php endforeach; ?>
 					</div>
 				</div><!--companies-list end-->
 				<div class="process-comm">
-					<div class="spinner">
-						<div class="bounce1"></div>
-						<div class="bounce2"></div>
-						<div class="bounce3"></div>
+
 					</div>
 				</div><!--process-comm end-->
 			</div>

@@ -34,7 +34,8 @@
 						<div class="row">
 							<div class="col-lg-3 col-md-4 pd-left-none no-pd">
 								<div class="main-left-sidebar no-margin">
-									<div class="user-data full-width">
+
+									<div class="user-data full-width shadow">
 										<div class="user-profile">
 											<div class="username-dt">
 												<div class="usr-pic">
@@ -59,7 +60,7 @@
 							</div>
 							<div class="col-lg-6 col-md-8 no-pd">
 								<div class="main-ws-sec">
-									<div class="post-topbar">
+									<div class="post-topbar  shadow">
 										<div class="user-picy">
 											<img src="images/resources/user-pic.png" alt="">
 										</div>
@@ -71,7 +72,7 @@
 									</div><!--post-topbar end-->
 									<div class="posts-section">
 
-										<div class="top-profiles">
+										<div class="top-profiles shadow">
 											<div class="pf-hd">
 												<h3>Newly Added Entrepreneurs</h3>
 												<i class="la la-ellipsis-v"></i>
@@ -96,7 +97,7 @@
                   $details = $cur->get_details($each['id']);
                   $img = base64_encode($each['image']);
                   ?>
-  										<div class="post-bar">
+  										<div class="post-bar shadow">
   											<div class="post_topbar">
   												<div class="usy-dt">
   													<img src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>" class="img-responsive" alt="">
@@ -148,7 +149,7 @@
 							</div>
 							<div class="col-lg-3 pd-right-none no-pd" style="width: 400px;">
                 <div class="right-sidebar ads">
-                  <div class="widget widget-about">
+                  <!-- <div class="widget widget-about"> -->
 
                     <div class="fb-page"
                        data-href="https://www.facebook.com/EinsteinRising/"
@@ -158,9 +159,9 @@
                        data-show-posts="false">
                     </div>
                   <div id="fb-root"></div>
-
-                  </div><!--widget-about end-->
-
+                  <br><br>
+                  <!-- </div> -->
+                    <a class="twitter-timeline shadow" data-height="250" href="https://twitter.com/EinsteinRising?ref_src=twsrc%5Etfw">Tweets by EinsteinRising</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div><!--right-sidebar end-->
 							</div>
 						</div>
