@@ -153,7 +153,7 @@
 								?>
 								<input type="hidden" id="imgt" name="" value="">
 									<div class="gallery_pf">
-								<div class="row" style="z-index: 1;">
+								<div class="row" style="margin-left: auto; margin-right: auto;">
 							<?php foreach ($gallery as $gala): ?>
 												<?php
 									$img = base64_encode($gala['image']);
@@ -161,10 +161,10 @@
 								?>
 
 									<div class="col-lg-8 col-md-8 col-sm-8 col-12 max-height: 100%;" 
-									class="galla-view" 
+									class="galla-view"  style="width: 100%;"
 									data-tooltip="<?php echo $gala['description']; ?>"
 									>
-										<div class="gallery_pt">
+										<div class="gallery_pt" style="margin-left: 100px; margin-right: auto;">
 											<img id="myImg" class="" src="data:image/jpg;charset=utf8;base64,<?php echo $img ?>">
 										</div>
 									</div>
